@@ -23,3 +23,8 @@ dependencies:
 test:
   override:
     - yarn test -- --single-run
+
+general:
+  artifacts:
+    - "./test-results.xml"
+    - "./coverage"
