@@ -23,8 +23,6 @@ dependencies:
 test:
   override:
     - yarn test -- --single-run
-
-general:
-  artifacts:
-    - "./test-results.xml"
-    - "./coverage"
+  post:
+    - mkdir $CIRCLE_TEST_REPORTS/karma
+    - mv test-results.xml $CIRCLE_TEST_REPORTS/karma
