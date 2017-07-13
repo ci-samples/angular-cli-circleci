@@ -4,8 +4,6 @@ jobs:
     working_directory: ~/angular-cli-circleci
     docker:
       - image: circleci/node:6-browsers
-        environment:
-          CHROME_BIN: "/usr/bin/google-chrome"
     steps:
       - checkout
       - restore_cache:
@@ -23,7 +21,7 @@ jobs:
           command: yarn ng -- build --prod --aot --no-progress
       - run:
           name: angular-test
-          command: xvfb-run -a yarn test -- --single-run --no-progress
+          command: yarn test -- --single-run --no-progress
       - store_artifacts:
           path: test-results.xml
           prefix: tests
